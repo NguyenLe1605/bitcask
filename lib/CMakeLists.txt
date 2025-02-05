@@ -1,4 +1,4 @@
-add_library(libkvs kvs.cpp)
+add_library(libkvs kvs.cpp kvs_store.cpp)
 add_library(kvs::libkvs ALIAS libkvs)
 set_target_properties(
     libkvs
