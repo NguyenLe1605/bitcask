@@ -6,3 +6,8 @@ set(CMAKE_CXX_STANDARD 17)
 add_subdirectory("bin")
 add_subdirectory("lib")
 
+include(CTest)
+
+if (BUILD_TESTING)
+    add_subdirectory("tests")
+endif()
