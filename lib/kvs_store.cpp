@@ -8,11 +8,11 @@ std::unique_ptr<KvsStore> KvsStore::Create() {
   return std::unique_ptr<KvsStore>{new KvsStore()};
 }
 
-void KvsStore::Set(const std::string &key, const std::string &value) {
+void KvsStore::Set(const std::string& key, const std::string& value) {
   map_[key] = value;
 }
 
-std::optional<std::string> KvsStore::Get(const std::string &key) {
+std::optional<std::string> KvsStore::Get(const std::string& key) {
   if (auto search = map_.find(key); search != map_.end()) {
     return search->second;
   } else {
@@ -20,4 +20,6 @@ std::optional<std::string> KvsStore::Get(const std::string &key) {
   }
 }
 
-void KvsStore::Remove(const std::string &key) { map_.erase(key); }
+void KvsStore::Remove(const std::string& key) {
+  map_.erase(key);
+}

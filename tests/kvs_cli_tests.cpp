@@ -1,14 +1,14 @@
-#include "version.h"
 #include <gtest/gtest.h>
 #include <reproc++/run.hpp>
 #include <system_error>
+#include "version.h"
 
 #define BITCASK_BINARY ("../bin/bitcask")
 
 namespace {
-std::pair<int, std::error_code> run_cli(const std::vector<std::string> &argv,
-                                        std::string &output,
-                                        std::string &error);
+std::pair<int, std::error_code> run_cli(const std::vector<std::string>& argv,
+                                        std::string& output,
+                                        std::string& error);
 }
 
 TEST(BasicCliTests, CliNoArgs) {
@@ -102,7 +102,7 @@ TEST(BasicCliTests, CliInvalidGet) {
   std::string output;
   std::string error;
 
-  for (auto &argv : argvs) {
+  for (auto& argv : argvs) {
     std::tie(status, ec) = run_cli(argv, output, error);
     ASSERT_TRUE(status != 0);
   }
@@ -132,7 +132,7 @@ TEST(BasicCliTests, CliInvalidSet) {
   std::string output;
   std::string error;
 
-  for (auto &argv : argvs) {
+  for (auto& argv : argvs) {
     std::tie(status, ec) = run_cli(argv, output, error);
     ASSERT_TRUE(status != 0);
   }
@@ -156,7 +156,7 @@ TEST(BasicCliTests, CliInvalidRm) {
   std::string output;
   std::string error;
 
-  for (auto &argv : argvs) {
+  for (auto& argv : argvs) {
     std::tie(status, ec) = run_cli(argv, output, error);
     ASSERT_TRUE(status != 0);
   }
@@ -174,9 +174,9 @@ TEST(BasicCliTests, CliInvalidSubcommand) {
 }
 
 namespace {
-std::pair<int, std::error_code> run_cli(const std::vector<std::string> &argv,
-                                        std::string &output,
-                                        std::string &error) {
+std::pair<int, std::error_code> run_cli(const std::vector<std::string>& argv,
+                                        std::string& output,
+                                        std::string& error) {
   reproc::process process;
   int status = -1;
   reproc::sink::string out_sink(output);
@@ -188,4 +188,4 @@ std::pair<int, std::error_code> run_cli(const std::vector<std::string> &argv,
 
   return reproc::run(argv, options, out_sink, err_sink);
 }
-} // namespace
+}  // namespace

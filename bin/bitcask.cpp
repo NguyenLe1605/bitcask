@@ -1,8 +1,8 @@
+#include <iostream>
 #include "CLI/CLI.hpp"
 #include "version.h"
-#include <iostream>
 
-int main(int argc, char **argv) {
+int main(int argc, char** argv) {
   CLI::App app{"bitcask"};
 
   app.add_flag_function(
